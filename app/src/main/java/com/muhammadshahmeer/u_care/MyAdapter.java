@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -32,17 +33,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.exe.setText(ls.get(position).getExe());
-//        holder.task.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(c,ls.get(position).getTask(),Toast.LENGTH_LONG).show();
-//            }
-//        });
+
     }
 
     @Override
     public int getItemCount() {
         return ls.size();
+    }
+    public void filterList(ArrayList<MyModel> filteredList) {
+        ls = filteredList;
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -50,7 +50,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             exe=itemView.findViewById(R.id.exe);
-
         }
     }
 }

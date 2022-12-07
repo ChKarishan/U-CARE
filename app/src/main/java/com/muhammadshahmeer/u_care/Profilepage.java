@@ -9,12 +9,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -27,17 +29,20 @@ public class Profilepage extends AppCompatActivity {
     TextView username,logout;
     String id,NAME;
     ImageView dp;
+    RelativeLayout logouttt;
+    TextView changepass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilepage);
         Intent intent = getIntent();
-        logout = findViewById(R.id.logout);
+        logouttt = findViewById(R.id.logouttt);
         todo = findViewById(R.id.todo);
         main = findViewById(R.id.main);
         id = intent.getStringExtra("id");
         NAME = intent.getStringExtra("name");
         dp = findViewById(R.id.dp);
+        changepass = findViewById(R.id.changepass);
         username =(TextView) findViewById(R.id.username);
         username.setText(NAME);
 
@@ -45,7 +50,14 @@ public class Profilepage extends AppCompatActivity {
             public void onClick(View view){
                 Intent intent = new Intent(Profilepage.this, TodoList.class);
                 startActivity(intent);
-                finish();
+            }
+        });
+
+        changepass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profilepage.this,ForgetPassword.class);
+                startActivity(intent);
             }
         });
 
@@ -53,15 +65,23 @@ public class Profilepage extends AppCompatActivity {
             public void onClick(View view){
                 Intent intent = new Intent(Profilepage.this, Mainpage.class);
                 startActivity(intent);
-                finish();
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Profilepage.this,Login.class);
+//                startActivity(intent);
+//            }
+//        });
+        logouttt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profilepage.this,Login.class);
-                startActivity(intent);
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.signOut();
+                startActivity(new Intent(Profilepage.this,Login.class));
+                finish();
             }
         });
 
@@ -106,8 +126,7 @@ public class Profilepage extends AppCompatActivity {
                                 {
 //                                        tv.setText(uri.toString());
                                     Picasso.get().load(uri.toString()).into(dp);
-//                            Picasso.get().load().
-//                            Log.d("imageurl",uri.toString());
+//
                                 }
                             });
                         }
@@ -119,5 +138,7 @@ public class Profilepage extends AppCompatActivity {
                     });
         }
     }
+
+
 
 }

@@ -9,7 +9,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,7 +24,8 @@ public class TodoList extends AppCompatActivity {
     RecyclerView rv;
     MyAdapter adapter;
     ImageView add;
-
+    EditText etSearch;
+    List<MyModel> lss;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,7 @@ public class TodoList extends AppCompatActivity {
         exercise = findViewById(R.id.exercise);
         rv=findViewById(R.id.rv);
         add=findViewById(R.id.add);
+        etSearch = findViewById(R.id.etSearch);
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -56,14 +61,36 @@ public class TodoList extends AppCompatActivity {
             }
         });
 
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
 
 
     }
+
+
+
+
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
-
         adapter=new MyAdapter(getData(),TodoList.this);
         RecyclerView.LayoutManager lm=new LinearLayoutManager(TodoList.this);
         rv.setLayoutManager(lm);
@@ -72,12 +99,11 @@ public class TodoList extends AppCompatActivity {
 
     @SuppressLint("Range")
     public List<MyModel> getData(){
-        List<MyModel> lss=new ArrayList<>();
+         lss=new ArrayList<>();
         MyDBHelper helper=new MyDBHelper(TodoList.this);
         SQLiteDatabase db=helper.getReadableDatabase();
         String[] cols={MyTasks.MyTask._ID,
                 MyTasks.MyTask._EXE};
-
         Cursor c=db.query(
                 MyTasks.MyTask.TABLE_NAME,
                 cols,
@@ -85,22 +111,29 @@ public class TodoList extends AppCompatActivity {
                 null,
                 null,
                 null,
-                null
+                MyTasks.MyTask._EXE+" ASC"
         );
-
-
-       while (c.moveToNext())
+        while (c.moveToNext())
         {
-            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
-        lss.add(
-                new MyModel(
-                        c.getString(c.getColumnIndex(MyTasks.MyTask._EXE))
-                ));
+            lss.add(
+                    new MyModel(
+                            c.getString(c.getColumnIndex(MyTasks.MyTask._EXE))
+                    )
+            );
         }
-
         db.close();
         helper.close();
         return lss;
 
+    }
+
+    private void filter(String text) {
+        ArrayList<MyModel> filteredList = new ArrayList<>();
+        for(MyModel item : lss){
+            if(item.getExe().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
     }
 }

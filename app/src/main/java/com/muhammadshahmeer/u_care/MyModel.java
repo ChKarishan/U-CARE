@@ -15,5 +15,4 @@ public class MyModel {
         this.exe = exe;
     }
 
-
 }

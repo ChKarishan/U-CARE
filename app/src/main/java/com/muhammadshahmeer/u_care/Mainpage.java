@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -14,6 +17,9 @@ import java.util.ArrayList;
 public class Mainpage extends AppCompatActivity implements SelectListner {
     ImageView profile, todo;
     RecyclerView recyclerView;
+    EditText etSearch;
+    ArrayList<Day_Model> list = new ArrayList<>();
+    Day_Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +29,28 @@ public class Mainpage extends AppCompatActivity implements SelectListner {
         profile = findViewById(R.id.profile);
         todo = findViewById(R.id.todo);
         recyclerView = findViewById(R.id.recyclerview);
-        ArrayList<Day_Model> list = new ArrayList<>();
+        etSearch = findViewById(R.id.etSearch);
+
+
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
+
+
         list.add(new Day_Model("Day 1"));
         list.add(new Day_Model("Day 2"));
         list.add(new Day_Model("Day 3"));
@@ -55,7 +82,8 @@ public class Mainpage extends AppCompatActivity implements SelectListner {
         list.add(new Day_Model("Day 29"));
         list.add(new Day_Model("Day 30"));
 
-        Day_Adapter adapter = new Day_Adapter(list, this, this);
+
+        adapter = new Day_Adapter(list, this, this);
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -207,5 +235,15 @@ public class Mainpage extends AppCompatActivity implements SelectListner {
         }
 
 
+    }
+
+    private void filter(String text) {
+        ArrayList<Day_Model> filteredList = new ArrayList<>();
+        for(Day_Model item : list){
+            if(item.getText().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
     }
 }

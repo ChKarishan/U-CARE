@@ -89,10 +89,18 @@ public class Login extends AppCompatActivity {
                 ).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                            @Override
                                            public void onSuccess(AuthResult authResult) {
+                                               String id = authResult.getUser().getUid();
+                                               String name = authResult.getUser().getDisplayName();
+
                                                progressDialog.dismiss();
 //                        Toast.makeText(Activity3.this, authResult.getUser().getUid(), Toast.LENGTH_SHORT).show();
                                                Toast.makeText(Login.this, "Logged in Successfully.", Toast.LENGTH_SHORT).show();
-                                               startActivity(new Intent(Login.this, Mainpage.class));
+                                               Intent intent = new Intent(Login.this, Profilepage.class);
+                                               intent.putExtra("id", id);
+                                               intent.putExtra("name", name);
+
+                                               startActivity(intent);
+//                                               startActivity(new Intent(Login.this, Mainpage.class));
                                            }   }
                 ).addOnFailureListener(new OnFailureListener() {
                     @Override
