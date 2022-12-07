@@ -140,6 +140,10 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(Login.this, Profilepage.class));
+        }
+
 
 
     }

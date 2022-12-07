@@ -15,7 +15,7 @@
         <RelativeLayout
             android:background="#66200B"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             android:layout_marginTop="20dp"
             android:padding="5dp">
 
@@ -36,7 +36,7 @@
                 android:hint="Search Tasks:"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="22dp" />
+                android:textSize="19dp" />
 
         </RelativeLayout>
         <RelativeLayout
@@ -48,20 +48,20 @@
                 android:id="@+id/rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-
+            
+            <ImageView
+                android:background="#66200B"
+                android:id="@+id/add"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="20dp"
+                android:src="@drawable/add"
+                app:tint="@color/white">
+            </ImageView>
         </RelativeLayout>
-        <ImageView
-            android:background="#66200B"
-            android:id="@+id/add"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginHorizontal="280dp"
-            android:src="@drawable/add"
-            app:tint="@color/white">
-        </ImageView>
+
 
         <LinearLayout
             android:layout_width="match_parent"

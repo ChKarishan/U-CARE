@@ -136,6 +136,10 @@ public class Signup extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(Signup.this, Profilepage.class));
+        }
 //
 
     }
