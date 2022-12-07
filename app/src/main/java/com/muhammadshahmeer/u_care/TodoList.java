@@ -85,17 +85,19 @@ public class TodoList extends AppCompatActivity {
                 null,
                 null,
                 null,
-                MyTasks.MyTask._EXE+" ASC"
+                null
         );
-        while (c.moveToNext())
-        {
-            lss.add(
-                    new MyModel(
-                            c.getString(c.getColumnIndex(MyTasks.MyTask._EXE))
 
-                    )
-            );
+
+       while (c.moveToNext())
+        {
+            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+        lss.add(
+                new MyModel(
+                        c.getString(c.getColumnIndex(MyTasks.MyTask._EXE))
+                ));
         }
+
         db.close();
         helper.close();
         return lss;

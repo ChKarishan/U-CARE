@@ -31,23 +31,24 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_weight="4">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/add"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginHorizontal="280dp"
-                android:src="@drawable/add"
-                app:tint="@color/white">
-            </ImageView>
+
 
         </RelativeLayout>
-
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="280dp"
+            android:src="@drawable/add"
+            app:tint="@color/white">
+        </ImageView>
 
         <LinearLayout
             android:layout_width="match_parent"

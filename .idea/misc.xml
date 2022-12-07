@@ -8,13 +8,21 @@
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/drawable/ic_launcher_background.xml" value="0.169" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/drawable/logout.xml" value="0.232" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_add.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_arms_day.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_back_and_abs_day.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_chest_day.xml" value="0.23645833333333333" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_forget_password.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_leg_day.xml" value="0.23645833333333333" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_login.xml" value="0.22239583333333332" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_main.xml" value="0.128" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_mainpage.xml" value="0.22239583333333332" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_profilepage.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_rest_day.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_shoulder_day.xml" value="0.23645833333333333" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_signup.xml" value="0.22239583333333332" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/activity_todo_list.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/game_sample.xml" value="0.23645833333333333" />
+        <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/recyclerview_sample.xml" value="0.23645833333333333" />
         <entry key="..\:/SMD/Project/Project_U-CARE/app/src/main/res/layout/row.xml" value="0.23645833333333333" />
       </map>
     </option>
